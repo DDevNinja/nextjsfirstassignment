@@ -1,0 +1,165 @@
+// @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+// :root {
+//   --primary-col: #2668ff;
+//   --text-col: #000000;
+//   --background-col: #ffffff;
+
+//   overflow: hidden;
+//   font-family: "Inter", sans-serif;
+// }
+
+// .copy-banner {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   height: auto;
+//   background-color: var(--background-col);
+//   font-weight: 500;
+//   position: relative;
+
+//   .copy {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     padding: 80px 0;
+//     color: var(--text-col);
+
+//     .title {
+//       font-size: 20px;      /* change this */
+//       line-height: 36px;    /* change this */
+//     }
+//     .sub-title {
+//       font-size: 25px;
+//       line-height: 40px;
+//     }
+     
+//     .jumbo-text{
+//       display: flex;
+//       flex-direction: column;
+//       justify-items: flex-start;
+//       display:none;
+//     }
+//     .caption {
+//       font-size: 18px;
+//       line-height: 24px;
+//       font-weight: 400;
+//     }
+
+//     .btn-wrapper {
+//       margin-top: 16px;
+//      .arrow{
+//       margin-left:0.6rem;
+//      }
+//       .left-btn,
+//       .right-btn,
+//       .learn-anchor {
+//         display: none;
+//       }
+//     }
+//   }
+// }
+
+// @import "./style/variants/variants";
+
+
+// 2)
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/* ===================== MIXINS ===================== */
+
+@mixin root-vars($primary, $text, $bg) {
+  --primary-col: #{$primary};
+  --text-col: #{$text};
+  --background-col: #{$bg};
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin title-style($fs, $lh) {
+  font-size: $fs;
+  line-height: $lh;
+}
+
+@mixin caption-style($fs, $lh, $fw: 400) {
+  font-size: $fs;
+  line-height: $lh;
+  font-weight: $fw;
+}
+
+/* ===================== ROOT ===================== */
+
+:root {
+  @include root-vars(#2668ff, #000000, #ffffff);
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===================== COPY BANNER ===================== */
+
+.copy-banner {
+  @include flex-center;
+  width: 100%;
+  height: auto;
+  background-color: var(--background-col);
+  font-weight: 500;
+  position: relative;
+
+  .copy {
+    @include flex-column-center;
+    padding: 80px 0;
+    color: var(--text-col);
+
+    .title {
+      @include title-style(20px, 36px);
+    }
+
+    .sub-title {
+      font-size: 25px;
+      line-height: 40px;
+    }
+
+    .jumbo-text {
+      display: flex;
+      flex-direction: column;
+      justify-items: flex-start;
+      display: none;
+    }
+
+    .caption {
+      @include caption-style(18px, 24px);
+    }
+
+    .btn-wrapper {
+      margin-top: 16px;
+
+      .arrow {
+        margin-left: 0.6rem;
+      }
+
+      .left-btn,
+      .right-btn,
+      .learn-anchor {
+        display: none;
+      }
+    }
+  }
+}
+
+/* ===================== VARIANTS ===================== */
+
+@import "./style/variants/variants";

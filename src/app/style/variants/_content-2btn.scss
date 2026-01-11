@@ -1,0 +1,193 @@
+// .copy-banner.content-2btn.bg-black {
+//   --background-col: #000000;
+//   --text-col: #ffffff;
+//   --primary-col: #ffffff;
+// }
+
+// .copy-banner.content-2btn.bg-blue {
+//   --background-col: #2668ff;
+//   --text-col: #ffffff;
+//   --primary-col: #ffffff;
+// }
+
+
+// .copy-banner.content-2btn {
+//   .copy {
+//     .btn-wrapper {
+//       display: flex;
+//       gap: 24px;
+
+//       .left-btn {
+//         all: unset;
+//          background-color: #2668ff; /* BLUE */
+//         border: 1px solid var(--text-col);
+//         font-size: 16px;
+//         line-height: 16px;
+//         padding: 20px 40px;
+//         border-radius: 50px;
+//       }
+
+//       .right-btn {
+//         all: unset;
+//         border: 1px solid var(--text-col);
+//         font-size: 16px;
+//         line-height: 16px;
+//         padding: 20px 40px;
+//         border-radius: 50px;
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: 768px) {
+//   .copy-banner.content-2btn {
+//     .copy {
+//       .title {
+//         font-size: 1.9375rem;   // 31px
+//         line-height: 2.75rem;   // 44px
+//       }
+
+//       .sub-title {
+//         padding-top: 0.125rem; // 2px
+//         font-size: 1.75rem;    // 28px
+//         line-height: 2.5rem;   // 40px
+//       }
+
+//       .caption {
+//         font-size: 1.1875rem;  // 19px
+//         line-height: 1.5rem;   // 24px
+//         font-weight: 400;
+//       }
+//     }
+//   }
+// }
+
+
+// @media (min-width: 992px){
+
+//  .copy-banner.content-2btn{
+//     .copy {
+//       .title {
+//         font-size: 1.875rem; // 30px
+//         line-height: 2.75rem; // 44px
+//       }
+
+//       .sub-title {
+//         padding-top: 0.125rem; // 2px
+//         font-size: 1.5625rem; // 25px
+//         line-height: 2.5rem; // 40px
+//       }
+
+//       .caption {
+//         font-size: 0.9375rem; // 15px
+//         line-height: 1.5rem; // 24px
+//         font-weight: 400;
+//       }
+
+//       // .btn-wrapper {
+//       //   .left-btn {
+//       //     padding: 1.25rem 2.5rem; // 20px 40px
+//       //   }
+//       // }
+//     }
+
+//   }
+// }
+
+
+// 2)
+$blue: #2668ff;
+
+@mixin flex($gap: 0) {
+  display: flex;
+  gap: $gap;
+}
+
+@mixin pill-btn(
+  $bg: transparent,
+  $border: var(--text-col)
+) {
+  all: unset;
+  background-color: $bg;
+  border: 1px solid $border;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 20px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+@mixin title($fs, $lh) {
+  font-size: $fs;
+  line-height: $lh;
+}
+
+@mixin subtitle($pt, $fs, $lh) {
+  padding-top: $pt;
+  font-size: $fs;
+  line-height: $lh;
+}
+
+@mixin caption($fs, $lh, $fw: 400) {
+  font-size: $fs;
+  line-height: $lh;
+  font-weight: $fw;
+}
+
+@mixin respond($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+.copy-banner.content-2btn {
+  .copy {
+    .btn-wrapper {
+      @include flex(24px);
+
+      .left-btn {
+        @include pill-btn($blue);
+      }
+
+      .right-btn {
+        @include pill-btn();
+      }
+    }
+  }
+}
+
+@include respond(768px) {
+  .copy-banner.content-2btn {
+    .copy {
+      .title {
+        @include title(1.9375rem, 2.75rem);
+      }
+
+      .sub-title {
+        @include subtitle(0.125rem, 1.75rem, 2.5rem);
+      }
+
+      .caption {
+        @include caption(1.1875rem, 1.5rem);
+      }
+    }
+  }
+}
+
+@include respond(992px) {
+  .copy-banner.content-2btn {
+    .copy {
+      .title {
+        @include title(1.875rem, 2.75rem);
+      }
+
+      .sub-title {
+        @include subtitle(0.125rem, 1.5625rem, 2.5rem);
+      }
+
+      .caption {
+        @include caption(0.9375rem, 1.5rem);
+      }
+    }
+  }
+}
