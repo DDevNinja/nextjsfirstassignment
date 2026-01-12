@@ -436,6 +436,7 @@ $blue: #2668ff;
     &::before {
       @include pseudo-bg(
         "/images/bg.png",
+        
         clamp(680px, 37vw, 1100px),
         100%,
         48.5%,
